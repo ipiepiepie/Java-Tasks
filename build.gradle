@@ -1,0 +1,15 @@
+plugins {
+    id 'java'
+}
+
+group = 'xyz.ipiepiepie'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.intellij:forms_rt:7.0.3'
+    implementation 'commons-cli:commons-cli:1.6.0'
+}
