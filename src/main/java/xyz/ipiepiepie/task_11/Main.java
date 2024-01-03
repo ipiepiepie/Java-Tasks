@@ -4,11 +4,9 @@ import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.DefaultParser;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
-import xyz.ipiepiepie.task_10.Candy;
-import xyz.ipiepiepie.task_10.gui.Form;
+import xyz.ipiepiepie.task_11.gui.Menu;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -68,7 +66,7 @@ public class Main {
                     System.out.println(findDates(text));
                 }
             } else if (cmd.hasOption("g")) {
-                new Form();
+                new Menu();
             } else {
                 String path = cmd.getArgs()[0];
                 String text = read(Path.of(path));
@@ -99,8 +97,11 @@ public class Main {
      * @param text processing text
      * @return {@link List} of {@link Date Dates}
      */
-    private static List<String> findDates(String text) {
+    public static List<String> findDates(String text) {
         List<String> dates = new ArrayList<>();
+
+        // skip null or empty text
+        if (text == null || text.isBlank()) return dates;
 
         // parse DD.MM.YYYY
         dates.addAll(findDates(text, DatePattern.getDateMonthNumberYearPattern()));
