@@ -4,17 +4,21 @@ import java.util.regex.Pattern;
 
 public class DatePattern {
     // day //
-    private static final String day = "([1-9]|0[1-9]|[12][0-9]|3[01])";
+    private static final String day = "\\s([1-9]|0[1-9]|[12][0-9]|3[01])";
     // month //
     private static final String month = "(0[1-9]|1[012])";
     private static final String[] months = {
             "декабрь", "январь", "февраль",
             "март", "апрель", "май",
             "июнь", "июль", "август",
-            "сентябрь", "октябрь", "ноябрь"
+            "сентябрь", "октябрь", "ноябрь",
+            "декабря", "января", "февраля",
+            "марта", "июля", "июня",
+            "августа", "сентября", "октября",
+            "ноября"
     };
     // year //
-    private static final String year = "(\\d{1,4})";
+    private static final String year = "(\\d{4})";
     // divider //
     private static final String point = "\\.";
     private static final String space = " ";

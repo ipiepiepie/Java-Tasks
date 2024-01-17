@@ -29,7 +29,6 @@ public class Main {
         // register options
         options.addOption("d", "debug", false, "Run program in debug mode");
         options.addOption("g", "gui", false, "Run program in GUI mode");
-        options.addOption("m", "money", true, "Specify money amount");
 
         // parse command
         parseArgs(options, args);
@@ -122,7 +121,11 @@ public class Main {
      * @return {@link List} of {@link Date Dates} from text
      */
     private static List<String> findDates(String text, Pattern pattern) {
-        return pattern.matcher(text.toLowerCase()).results().map(MatchResult::group).toList();
+        return pattern.matcher(text.toLowerCase())
+                .results()
+                .map(MatchResult::group)
+                .map(result -> result.replaceAll("\\n", ""))
+                .toList();
     }
 
     /// I/O FUNCTIONS ///
